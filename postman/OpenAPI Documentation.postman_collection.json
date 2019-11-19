@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "552de1f6-fe05-4e54-a507-501e367d2986",
+		"name": "OpenAPI Documentation",
+		"description": "Sample requests for the video series about OpenAPI documentation in .NET Core 3.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get documentation document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c5082e08-c0dc-4484-ae06-d1bc763cd6f8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "570daaa8-935c-4ef0-8884-40f4d032d769",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1f1ba2e6-55e1-4117-a73a-c9acb9a97439",
+			"key": "protocol",
+			"value": "https",
+			"type": "string"
+		},
+		{
+			"id": "4675e95c-d7b8-47c2-873a-90228caed822",
+			"key": "host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"id": "c41dbc7c-e12c-49f0-b255-beabd9b1ccb9",
+			"key": "port",
+			"value": "5001",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

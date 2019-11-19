@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace OpenApi
 {
@@ -27,6 +28,23 @@ namespace OpenApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo() {
+                    Title = "My API Name",
+                    Version = "v1",
+                    Description = "Sample API for our video series",
+                    Contact = new OpenApiContact() {
+                        Name = "Sebastian Gingter",
+                        Email = "sebastian.gingter@thinktecture.com",
+                        Url = new Uri("https://thinktecture.com"),
+                    },
+                    License = new OpenApiLicense() {
+                        Name = "Licensed under the Apache 2.0 License",
+                        Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html"),
+                    },
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +64,10 @@ namespace OpenApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger(c => {
+                c.RouteTemplate = "openapi/{documentName}/openapi.json"; // default: "swagger/{documentName}/swagger.json"
             });
         }
     }
