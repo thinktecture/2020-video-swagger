@@ -52,6 +52,7 @@ namespace OpenApi
                 c.IncludeXmlComments("./OpenApi.xml");
 
                 c.DocumentFilter<ApiInfoDocumentFilter>();
+                c.OperationFilter<CorrelationIdHeaderOperationFilter>();
             });
         }
 
