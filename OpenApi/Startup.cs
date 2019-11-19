@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 
 namespace OpenApi
 {
+#pragma warning disable 1591 // Missing XML Doc
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -48,4 +49,5 @@ namespace OpenApi
             });
         }
     }
+#pragma warning restore 1591
 }

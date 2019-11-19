@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace OpenApi
 {
+#pragma warning disable 1591 // Missing XML Doc
     public class Program
     {
         public static void Main(string[] args)
@@ -23,4 +24,5 @@ namespace OpenApi
                     webBuilder.UseStartup<Startup>();
                 });
     }
+#pragma warning restore 1591
 }

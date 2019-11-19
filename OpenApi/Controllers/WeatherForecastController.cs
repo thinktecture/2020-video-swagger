@@ -7,6 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace OpenApi.Controllers
 {
+    /// <summary>
+    /// Returns data related to weather forecasts.
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -18,11 +21,19 @@ namespace OpenApi.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WeatherForecastController"/>.
+        /// </summary>
+        /// <param name="logger">An instance of an <see cref="ILogger"/>.</param>
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
         }
 
+        /// <summary>
+        /// Returns five weather forecasts.
+        /// </summary>
+        /// <returns>A list of five <see cref="WeatherForecast"/> objects.</returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
