@@ -69,6 +69,11 @@ namespace OpenApi
             app.UseSwagger(c => {
                 c.RouteTemplate = "openapi/{documentName}/openapi.json"; // default: "swagger/{documentName}/swagger.json"
             });
+
+            app.UseSwaggerUI(c => {
+                c.RoutePrefix = "documentation"; // default: "Swagger"
+                c.SwaggerEndpoint("/openapi/v1/openapi.json", "OpenAPI Sample v1");
+            });
         }
     }
 #pragma warning restore 1591
