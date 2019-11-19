@@ -48,6 +48,7 @@ namespace OpenApi
                 });
 
                 c.EnableAnnotations();
+                c.IncludeXmlComments("./OpenApi.xml");
             });
         }
 
