@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <DocumentationFile>OpenApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,4 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="OpenApi.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
