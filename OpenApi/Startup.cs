@@ -19,6 +19,9 @@ namespace OpenApi
 #pragma warning disable 1591 // Missing XML Doc
     public class Startup
     {
+        private static readonly int[] ApiVersions = new[] { 1, 2, 3, };
+        private static readonly int DefaultApiVersion = ApiVersions.Last();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +34,21 @@ namespace OpenApi
         {
             services.AddSingleton<ArticleService>();
             services.AddControllers();
+
+            services.AddApiVersioning(options => {
+                options.DefaultApiVersion = new ApiVersion(DefaultApiVersion, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+            });
+
+            services.AddVersionedApiExplorer(options =>
+            {
+                // Swagger uses GroupName to sort endpoints into certain documents, so make sure ApiExplorer
+                // sets a group name that corresponds to the version url part
+                options.GroupNameFormat = "'v'VVV";
+
+                // Make sure we do not have the {version} part of the Url as parameter in the swagger urls
+                options.SubstituteApiVersionInUrl = true;
+            });
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo() {

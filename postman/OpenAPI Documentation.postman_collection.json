@@ -1,18 +1,935 @@
 {
 	"info": {
-		"_postman_id": "552de1f6-fe05-4e54-a507-501e367d2986",
+		"_postman_id": "2191de14-c55b-45dd-8539-3bafa03b93bd",
 		"name": "OpenAPI Documentation",
-		"description": "Sample requests for the video series about OpenAPI documentation in .NET Core 3.0",
+		"description": "Sample requests for the video series about OpenAPI documentation in .NET Core 3.1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "health",
+							"item": [
+								{
+									"name": "Healthcheck",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/health",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"health"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "weatherforecast",
+							"item": [
+								{
+									"name": "5 weather forecasts",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/weatherforecast",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"weatherforecast"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "article",
+							"item": [
+								{
+									"name": "List all articles",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "One article by number",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add a new article",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": 5,\r\n    \"name\": \"Added Article\",\r\n    \"description\": \"Some article to add\",\r\n    \"price\": 2.34\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												""
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update an article",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": 5,\r\n    \"name\": \"Updated Article\",\r\n    \"description\": \"Some article has been updated\",\r\n    \"price\": 3.45\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete an article",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d146e551-3245-4a44-9283-544c8c171b88",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"version\", \"v1\");",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4d4372a-313b-48ef-8e16-eccc466286a9",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "v2",
+					"item": [
+						{
+							"name": "health",
+							"item": [
+								{
+									"name": "Healthcheck",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/health",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"health"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "weatherforecast",
+							"item": [
+								{
+									"name": "paged weather forecasts",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/weatherforecast?skip=2&take=3",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"weatherforecast"
+											],
+											"query": [
+												{
+													"key": "skip",
+													"value": "2"
+												},
+												{
+													"key": "take",
+													"value": "3"
+												}
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "article",
+							"item": [
+								{
+									"name": "List all articles paged",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "One article by number",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add a new article",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": 5,\r\n    \"name\": \"Added Article\",\r\n    \"description\": \"Some article to add\",\r\n    \"price\": 2.34\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												""
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update an article",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": 5,\r\n    \"name\": \"Updated Article\",\r\n    \"description\": \"Some article has been updated\",\r\n    \"price\": 3.45\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete an article",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c760c464-bc42-4341-9b6d-2e3d7b5d33b6",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "128465c1-c0fc-4b89-9cbe-0dd85ac9d749",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5876298d-698f-4953-a235-79235633a44c",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"version\", \"v2\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6623fec-936e-4acf-9085-351f0e0202d8",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "v3",
+					"item": [
+						{
+							"name": "health",
+							"item": [
+								{
+									"name": "Healthcheck",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/health",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"health"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "weatherforecast",
+							"item": [
+								{
+									"name": "weather forecast api does not exist in v3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a2e51bab-5d9a-4dee-b6fb-498ce95578c7",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    // This call does not exist in Verion 3",
+													"    pm.response.to.have.status(400);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/weatherforecast?skip=2&take=3",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"weatherforecast"
+											],
+											"query": [
+												{
+													"key": "skip",
+													"value": "2"
+												},
+												{
+													"key": "take",
+													"value": "3"
+												}
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "article",
+							"item": [
+								{
+									"name": "List all articles paged",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "One article by number",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add a new article",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": 5,\r\n    \"name\": \"Added Article\",\r\n    \"description\": \"Some article to add\",\r\n    \"price\": 2.34\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												""
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update an article",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": 5,\r\n    \"name\": \"Updated Article\",\r\n    \"description\": \"Some article has been updated\",\r\n    \"price\": 3.45\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete an article",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{host}}:{{port}}/api/:version/article/:number",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"api",
+												":version",
+												"article",
+												":number"
+											],
+											"variable": [
+												{
+													"key": "version",
+													"value": "{{version}}"
+												},
+												{
+													"key": "number",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c760c464-bc42-4341-9b6d-2e3d7b5d33b6",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "128465c1-c0fc-4b89-9cbe-0dd85ac9d749",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b1a7c8b8-b9e2-4a42-a0b7-2bec26ffc1c3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"version\", \"v3\");",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "81493467-0f47-4e3f-9dcb-37e77746811b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
 		{
 			"name": "Get documentation document",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{protocol}}://{{host}}:{{port}}/openapi/v1/openapi.json",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"openapi",
+						"v1",
+						"openapi.json"
+					]
 				}
 			},
 			"response": []
@@ -42,21 +959,27 @@
 	],
 	"variable": [
 		{
-			"id": "1f1ba2e6-55e1-4117-a73a-c9acb9a97439",
+			"id": "ae5b9fa0-8e18-479c-8576-f5adf4373cdc",
 			"key": "protocol",
 			"value": "https",
 			"type": "string"
 		},
 		{
-			"id": "4675e95c-d7b8-47c2-873a-90228caed822",
+			"id": "9efa0890-9a33-4d0d-93fd-c4846fed557e",
 			"key": "host",
 			"value": "localhost",
 			"type": "string"
 		},
 		{
-			"id": "c41dbc7c-e12c-49f0-b255-beabd9b1ccb9",
+			"id": "a90cd673-1858-41a9-8c29-2946fbaa0c3f",
 			"key": "port",
 			"value": "5001",
+			"type": "string"
+		},
+		{
+			"id": "b4a7f0b9-7673-41fc-b342-98ce56fcf868",
+			"key": "version",
+			"value": "v1",
 			"type": "string"
 		}
 	],

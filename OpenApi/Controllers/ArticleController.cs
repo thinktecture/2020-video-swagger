@@ -12,7 +12,8 @@ namespace OpenApi.Controllers
     /// Handles articles.
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1"), ApiVersion("2"), ApiVersion("3")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ArticleController : ControllerBase
     {
         private readonly ArticleService _articleService;
@@ -30,7 +31,7 @@ namespace OpenApi.Controllers
         /// Gets all articles available
         /// </summary>
         /// <returns>A list of all available articles.</returns>
-        [HttpGet]
+        [HttpGet, MapToApiVersion("1")]
         [SwaggerOperation("Gets all articles.", "This operation will return all articles from the store.")]
         [SwaggerResponse(200, "A list of all available articles.", typeof(Article[]))]
         [SwaggerResponse(404, "No articles are available.")]
@@ -40,6 +41,22 @@ namespace OpenApi.Controllers
                 return NotFound();
 
             return Ok(GetPagedData(0, Int32.MaxValue).Entries);
+        }
+
+        /// <summary>
+        /// Gets a paged result of articles.
+        /// </summary>
+        /// <param name="skip">The articles to skip while fetching.</param>
+        /// <param name="take">The amount of articles to return.</param>
+        /// <returns>A <see cref="PagedResult{T}"/> of articles.</returns>
+        [HttpGet, MapToApiVersion("2"), MapToApiVersion("3")]
+        [SwaggerOperation(Tags = new[] { "Article", "Changed" })]
+        public ActionResult<PagedResult<Article>> GetPaged(int skip = 0, int take = 10)
+        {
+            if (_articleService.Articles.Count == 0)
+                return NotFound();
+
+            return GetPagedData(skip, take);
         }
 
         /// <summary>
