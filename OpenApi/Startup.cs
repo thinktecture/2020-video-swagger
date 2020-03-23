@@ -156,6 +156,8 @@ namespace OpenApi
                     UsePkceWithAuthorizationCodeGrant = true,
                 };
             });
+
+            app.UseStaticFiles();
         }
     }
 #pragma warning restore 1591
