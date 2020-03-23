@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +41,21 @@ namespace OpenApi
                 options.DefaultApiVersion = new ApiVersion(DefaultApiVersion, 0);
                 options.AssumeDefaultVersionWhenUnspecified = true;
             });
+
+            services
+                .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options => {
+                    options.Authority = "https://demo.identityserver.io";
+                    options.ApiName = "api";
+                });
+
+            services
+                .AddAuthorization(config => {
+                    config.AddPolicy("ApiPolicy", builder => {
+                        builder.RequireAuthenticatedUser();
+                        builder.RequireScope("api");
+                    });
+                });
 
             services.AddVersionedApiExplorer(options =>
             {
@@ -89,6 +106,7 @@ namespace OpenApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
