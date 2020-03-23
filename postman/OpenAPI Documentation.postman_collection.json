@@ -255,6 +255,33 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get documentation document",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/openapi/:version/openapi.json",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"openapi",
+										":version",
+										"openapi.json"
+									],
+									"variable": [
+										{
+											"key": "version",
+											"value": "{{version}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"event": [
@@ -561,6 +588,33 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get documentation document",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/openapi/:version/openapi.json",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"openapi",
+										":version",
+										"openapi.json"
+									],
+									"variable": [
+										{
+											"key": "version",
+											"value": "{{version}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"event": [
@@ -882,6 +936,33 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get documentation document",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/openapi/:version/openapi.json",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"openapi",
+										":version",
+										"openapi.json"
+									],
+									"variable": [
+										{
+											"key": "version",
+											"value": "{{version}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"event": [
@@ -912,27 +993,6 @@
 				}
 			],
 			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Get documentation document",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{protocol}}://{{host}}:{{port}}/openapi/v1/openapi.json",
-					"protocol": "{{protocol}}",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"openapi",
-						"v1",
-						"openapi.json"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"event": [
@@ -959,25 +1019,25 @@
 	],
 	"variable": [
 		{
-			"id": "ae5b9fa0-8e18-479c-8576-f5adf4373cdc",
+			"id": "11f6b79c-a914-4556-9ebc-5f0ea8bf7a5d",
 			"key": "protocol",
 			"value": "https",
 			"type": "string"
 		},
 		{
-			"id": "9efa0890-9a33-4d0d-93fd-c4846fed557e",
+			"id": "bd0a27bb-c4da-4de3-a29f-45b16638d7d6",
 			"key": "host",
 			"value": "localhost",
 			"type": "string"
 		},
 		{
-			"id": "a90cd673-1858-41a9-8c29-2946fbaa0c3f",
+			"id": "77f4ae64-88f3-483c-9990-c2bfee31fd48",
 			"key": "port",
 			"value": "5001",
 			"type": "string"
 		},
 		{
-			"id": "b4a7f0b9-7673-41fc-b342-98ce56fcf868",
+			"id": "34ea569b-5999-4ea4-b2ee-65c78a7bb175",
 			"key": "version",
 			"value": "v1",
 			"type": "string"

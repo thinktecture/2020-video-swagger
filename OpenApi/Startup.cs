@@ -51,20 +51,23 @@ namespace OpenApi
             });
 
             services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo() {
-                    Title = "My API Name",
-                    Version = "v1",
-                    Description = "Sample API for our video series",
-                    Contact = new OpenApiContact() {
-                        Name = "Sebastian Gingter",
-                        Email = "sebastian.gingter@thinktecture.com",
-                        Url = new Uri("https://thinktecture.com"),
-                    },
-                    License = new OpenApiLicense() {
-                        Name = "Licensed under the Apache 2.0 License",
-                        Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html"),
-                    },
-                });
+                foreach (var version in ApiVersions)
+                {
+                    c.SwaggerDoc($"v{version}", new OpenApiInfo() {
+                        Title = "My API Name",
+                        Version = $"v{version}",
+                        Description = "Sample API for our video series",
+                        Contact = new OpenApiContact() {
+                            Name = "Sebastian Gingter",
+                            Email = "sebastian.gingter@thinktecture.com",
+                            Url = new Uri("https://thinktecture.com"),
+                        },
+                        License = new OpenApiLicense() {
+                            Name = "Licensed under the Apache 2.0 License",
+                            Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html"),
+                        },
+                    });
+                }
 
                 c.EnableAnnotations();
                 c.IncludeXmlComments("./OpenApi.xml");
