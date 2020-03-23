@@ -9,7 +9,8 @@ namespace OpenApi.Controllers
     /// </summary>
     [ApiController]
     [AllowAnonymous]
-    [Route("[controller]")]
+    [ApiVersionNeutral]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class HealthController : ControllerBase
     {
         /// <summary>
