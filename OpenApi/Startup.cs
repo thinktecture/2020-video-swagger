@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OpenApi.Services;
 using OpenApi.Swagger;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace OpenApi
 {
@@ -39,6 +42,21 @@ namespace OpenApi
                 options.DefaultApiVersion = new ApiVersion(DefaultApiVersion, 0);
                 options.AssumeDefaultVersionWhenUnspecified = true;
             });
+
+            services
+                .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options => {
+                    options.Authority = "https://demo.identityserver.io";
+                    options.ApiName = "api";
+                });
+
+            services
+                .AddAuthorization(config => {
+                    config.AddPolicy("ApiPolicy", builder => {
+                        builder.RequireAuthenticatedUser();
+                        builder.RequireScope("api");
+                    });
+                });
 
             services.AddVersionedApiExplorer(options =>
             {
@@ -69,11 +87,33 @@ namespace OpenApi
                     });
                 }
 
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Name = "Authentication",
+                    In = ParameterLocation.Header,
+                    Scheme = "Bearer",
+                    OpenIdConnectUrl = new Uri("https://demo.identityserver.io"),
+                    Flows = new OpenApiOAuthFlows()
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow()
+                        {
+                            AuthorizationUrl = new Uri("https://demo.identityserver.io/connect/authorize"),
+                            TokenUrl = new Uri("https://demo.identityserver.io/connect/token"),
+                            Scopes = new Dictionary<string, string>()
+                            {
+                                { "api", "Scope to access the API" },
+                            },
+                        },
+                    },
+                });
+
                 c.EnableAnnotations();
                 c.IncludeXmlComments("./OpenApi.xml");
 
                 c.DocumentFilter<ApiInfoDocumentFilter>();
                 c.OperationFilter<CorrelationIdHeaderOperationFilter>();
+                c.OperationFilter<AddSecurityRequirementOperationFilter>();
             });
         }
 
@@ -89,6 +129,7 @@ namespace OpenApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -107,6 +148,13 @@ namespace OpenApi
                 {
                     c.SwaggerEndpoint($"/openapi/v{version}/openapi.json", $"OpenAPI Sample v{version}");
                 }
+
+                c.OAuthConfigObject = new OAuthConfigObject()
+                {
+                    ClientId = "interactive.public",
+                    ClientSecret = "secret",
+                    UsePkceWithAuthorizationCodeGrant = true,
+                };
             });
         }
     }

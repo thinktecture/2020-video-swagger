@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OpenApi.Models;
@@ -12,6 +13,7 @@ namespace OpenApi.Controllers
     /// Returns data related to weather forecasts.
     /// </summary>
     [ApiController]
+    [Authorize("ApiPolicy")]
     [ApiVersion("1"), ApiVersion("2")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class WeatherForecastController : ControllerBase

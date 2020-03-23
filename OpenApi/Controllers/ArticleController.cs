@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OpenApi.Models;
 using OpenApi.Services;
@@ -12,6 +13,7 @@ namespace OpenApi.Controllers
     /// Handles articles.
     /// </summary>
     [ApiController]
+    [Authorize("ApiPolicy")]
     [ApiVersion("1"), ApiVersion("2"), ApiVersion("3")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class ArticleController : ControllerBase

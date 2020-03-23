@@ -7,6 +7,68 @@
 	},
 	"item": [
 		{
+			"name": "Get authentication token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9f26def-bbd6-4c99-933b-8933911d0235",
+						"exec": [
+							"pm.test(\"Read token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"token\", jsonData.access_token);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "m2m",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "api",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://demo.identityserver.io/connect/token",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"identityserver",
+						"io"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "api",
 			"item": [
 				{
@@ -995,6 +1057,16 @@
 			"protocolProfileBehavior": {}
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -1019,27 +1091,33 @@
 	],
 	"variable": [
 		{
-			"id": "11f6b79c-a914-4556-9ebc-5f0ea8bf7a5d",
+			"id": "ac621d02-d52d-4115-a914-0a0c0521e4f4",
 			"key": "protocol",
 			"value": "https",
 			"type": "string"
 		},
 		{
-			"id": "bd0a27bb-c4da-4de3-a29f-45b16638d7d6",
+			"id": "a29302d1-1e7d-4081-bd19-2ba2c05b70b0",
 			"key": "host",
 			"value": "localhost",
 			"type": "string"
 		},
 		{
-			"id": "77f4ae64-88f3-483c-9990-c2bfee31fd48",
+			"id": "f9f18973-a500-4910-a0fd-95c54fbf7ebb",
 			"key": "port",
 			"value": "5001",
 			"type": "string"
 		},
 		{
-			"id": "34ea569b-5999-4ea4-b2ee-65c78a7bb175",
+			"id": "3d644e4c-fe64-4f27-aea1-9f9179405cc4",
 			"key": "version",
 			"value": "v1",
+			"type": "string"
+		},
+		{
+			"id": "a2cc13e9-56e5-4cc5-bfa2-747e41ea6261",
+			"key": "token",
+			"value": "",
 			"type": "string"
 		}
 	],
