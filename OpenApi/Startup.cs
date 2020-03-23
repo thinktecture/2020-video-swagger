@@ -102,7 +102,11 @@ namespace OpenApi
 
             app.UseSwaggerUI(c => {
                 c.RoutePrefix = "documentation"; // default: "Swagger"
-                c.SwaggerEndpoint("/openapi/v1/openapi.json", "OpenAPI Sample v1");
+
+                foreach (var version in ApiVersions)
+                {
+                    c.SwaggerEndpoint($"/openapi/v{version}/openapi.json", $"OpenAPI Sample v{version}");
+                }
             });
         }
     }
