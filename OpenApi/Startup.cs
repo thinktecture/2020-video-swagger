@@ -155,6 +155,8 @@ namespace OpenApi
                     ClientSecret = "secret",
                     UsePkceWithAuthorizationCodeGrant = true,
                 };
+
+                c.InjectStylesheet("/customizations.css");
             });
 
             app.UseStaticFiles();
