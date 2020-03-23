@@ -8,6 +8,9 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace OpenApi.Controllers
 {
+    /// <summary>
+    /// Handles articles.
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class ArticleController : ControllerBase
