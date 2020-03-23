@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OpenApi.Services;
+using OpenApi.Swagger;
 
 namespace OpenApi
 {
@@ -49,6 +50,9 @@ namespace OpenApi
 
                 c.EnableAnnotations();
                 c.IncludeXmlComments("./OpenApi.xml");
+
+                c.DocumentFilter<ApiInfoDocumentFilter>();
+                c.OperationFilter<CorrelationIdHeaderOperationFilter>();
             });
         }
 
