@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OpenApi.Services;
 using OpenApi.Swagger;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace OpenApi
 {
@@ -147,6 +148,13 @@ namespace OpenApi
                 {
                     c.SwaggerEndpoint($"/openapi/v{version}/openapi.json", $"OpenAPI Sample v{version}");
                 }
+
+                c.OAuthConfigObject = new OAuthConfigObject()
+                {
+                    ClientId = "interactive.public",
+                    ClientSecret = "secret",
+                    UsePkceWithAuthorizationCodeGrant = true,
+                };
             });
         }
     }
