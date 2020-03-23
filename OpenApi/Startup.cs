@@ -86,11 +86,33 @@ namespace OpenApi
                     });
                 }
 
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Name = "Authentication",
+                    In = ParameterLocation.Header,
+                    Scheme = "Bearer",
+                    OpenIdConnectUrl = new Uri("https://demo.identityserver.io"),
+                    Flows = new OpenApiOAuthFlows()
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow()
+                        {
+                            AuthorizationUrl = new Uri("https://demo.identityserver.io/connect/authorize"),
+                            TokenUrl = new Uri("https://demo.identityserver.io/connect/token"),
+                            Scopes = new Dictionary<string, string>()
+                            {
+                                { "api", "Scope to access the API" },
+                            },
+                        },
+                    },
+                });
+
                 c.EnableAnnotations();
                 c.IncludeXmlComments("./OpenApi.xml");
 
                 c.DocumentFilter<ApiInfoDocumentFilter>();
                 c.OperationFilter<CorrelationIdHeaderOperationFilter>();
+                c.OperationFilter<AddSecurityRequirementOperationFilter>();
             });
         }
 
