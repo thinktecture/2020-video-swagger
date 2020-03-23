@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace OpenApi.Models
 {
     /// <summary>
@@ -8,11 +10,13 @@ namespace OpenApi.Models
         /// <summary>
         /// The unique number of the article.
         /// </summary>
+        [Required]
         public int Number { get; set; }
 
         /// <summary>
         /// The name of the article.
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         /// <summary>

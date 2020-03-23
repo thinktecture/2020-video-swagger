@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using OpenApi.Models;
 using OpenApi.Services;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace OpenApi.Controllers
 {
@@ -27,6 +28,9 @@ namespace OpenApi.Controllers
         /// </summary>
         /// <returns>A list of all available articles.</returns>
         [HttpGet]
+        [SwaggerOperation("Gets all articles.", "This operation will return all articles from the store.")]
+        [SwaggerResponse(200, "A list of all available articles.", typeof(Article[]))]
+        [SwaggerResponse(404, "No articles are available.")]
         public ActionResult<IEnumerable<Article>> Get()
         {
             if (_articleService.Articles.Count == 0)
@@ -41,7 +45,10 @@ namespace OpenApi.Controllers
         /// <param name="number">The article number.</param>
         /// <returns>The article if found; otherwise, 404.</returns>
         [HttpGet("{number}")]
-        public ActionResult<Article> GetByNumber([FromRoute] int number)
+        [SwaggerOperation("Gets a certain article.", "This operation will return a specific article from the store.")]
+        [SwaggerResponse(200, "The requested article.", typeof(Article))]
+        [SwaggerResponse(404, "No article found.")]
+        public ActionResult<Article> GetByNumber([FromRoute][SwaggerParameter("The article number to fetch.")] int number)
         {
             var article = _articleService.Articles.FirstOrDefault(a => a.Number == number);
 
