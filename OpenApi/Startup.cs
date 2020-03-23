@@ -155,7 +155,15 @@ namespace OpenApi
                     ClientSecret = "secret",
                     UsePkceWithAuthorizationCodeGrant = true,
                 };
+
+                c.InjectStylesheet("/customizations.css");
+
+                c.EnableFilter();
+                c.ConfigObject.DocExpansion = DocExpansion.List;
+                c.ConfigObject.DisplayRequestDuration = true;
             });
+
+            app.UseStaticFiles();
         }
     }
 #pragma warning restore 1591

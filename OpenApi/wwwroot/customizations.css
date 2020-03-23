@@ -1,0 +1,8 @@
+div.information-container:before {
+   content: url(/tt-logo.png);
+   position: relative;
+   float: left;
+   margin-left: 2em;
+   margin-right: 2em;
+   margin-bottom: 3em;
+}
